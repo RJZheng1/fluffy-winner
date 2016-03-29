@@ -2,7 +2,9 @@ var svg = d3.select("body").append("svg")
     .attr("width",1000)
     .attr("height",500);
 
-
+var scale = d3.scale.linear()
+    .domain([0, 1])
+    .range(["red", "blue"]);
 
 d3.json("http://s3-us-west-2.amazonaws.com/vida-public/geo/us.json", function(data){
     svg.selectAll(".state")
@@ -14,5 +16,15 @@ d3.json("http://s3-us-west-2.amazonaws.com/vida-public/geo/us.json", function(da
 	.attr("d",d3.geo.path().projection(d3.geo.albersUsa()))
 	.attr("class",function(){return "state";})
     //id that corresponds to ids from tsv file
-	.attr("id",function(state){return state.id;})
+	.attr("id",function(state){
+	    return state.id;})
+	.attr("stroke", "black")
+	.attr("fill", function(){
+	    var v = voteData[idToState[this.id]];
+	    if(v === undefined){
+		return "black"
+	    }else{
+		return scale(v[0]/(v[0]+v[1]));
+	    }
+	})
 });
