@@ -3,7 +3,7 @@ var svg = d3.select("body").append("svg")
     .attr("height",500);
 
 var scale = d3.scale.linear()
-    .domain([0, 1])
+    .domain([0, 2])
     .range(["red", "blue"]);
 
 d3.json("http://s3-us-west-2.amazonaws.com/vida-public/geo/us.json", function(data){
@@ -24,7 +24,7 @@ d3.json("http://s3-us-west-2.amazonaws.com/vida-public/geo/us.json", function(da
 	    if(v === undefined){
 		return "black"
 	    }else{
-		return scale(v[0]/(v[0]+v[1]));
+		return scale(Math.cbrt(v[0]/(v[0]+v[1])*2-1)+1);
 	    }
 	})
 });
