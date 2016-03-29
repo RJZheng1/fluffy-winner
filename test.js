@@ -1,6 +1,4 @@
-var svg = d3.select("body").append("svg")
-    .attr("width",1000)
-    .attr("height",500);
+var svg = d3.select("svg");
 
 var scale = d3.scale.linear()
     .domain([0, 2])
@@ -20,7 +18,7 @@ d3.json("http://s3-us-west-2.amazonaws.com/vida-public/geo/us.json", function(da
 	    return state.id;})
 	.attr("stroke", "black")
 	.attr("fill", function(){
-	    var v = voteData[idToState[this.id]];
+	    var v = voteData2008[idToState[this.id]];
 	    if(v === undefined){
 		return "black"
 	    }else{
@@ -28,3 +26,18 @@ d3.json("http://s3-us-west-2.amazonaws.com/vida-public/geo/us.json", function(da
 	    }
 	})
 });
+
+changeData = function changeData(){
+    svg.selectAll(".state")
+	.attr("fill", function(){
+	    var year = document.getElementById("slider").value;
+	    var v = yearToData[year][idToState[this.id]];
+	    if(v === undefined){
+		return "black"
+	    }else{
+		return scale(Math.cbrt(v[0]/(v[0]+v[1])*2-1)+1);
+	    }	    
+	})
+};
+
+document.getElementById("slider").addEventListener("input", changeData);

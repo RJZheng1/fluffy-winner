@@ -1,8 +1,6 @@
 # fluffy-winner
 
-A United States map that displays the number of elected representatives and which way they lean.
+A United States map that colors in the state depending on what percent of its voters voted Repubican or Democrat during the general election.
 
 Source:
-http://www.brookings.edu/research/reports/2013/07/vital-statistics-congress-mann-ornstein
-
-https://www.archives.gov/federal-register/electoral-college/2012/popular-vote.html
+https://www.archives.gov/federal-register/electoral-college/historical.html
