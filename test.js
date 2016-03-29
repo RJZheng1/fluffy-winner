@@ -20,7 +20,7 @@ d3.json("http://s3-us-west-2.amazonaws.com/vida-public/geo/us.json", function(da
 	.attr("fill", function(){
 	    var v = voteData2008[idToState[this.id]];
 	    if(v === undefined){
-		return "black"
+		return "black";
 	    }else{
 		return scale(Math.cbrt(v[0]/(v[0]+v[1])*2-1)+1);
 	    }
@@ -33,10 +33,10 @@ changeData = function changeData(){
 	    var year = document.getElementById("slider").value;
 	    var v = yearToData[year][idToState[this.id]];
 	    if(v === undefined){
-		return "black"
+		return "black";
 	    }else{
 		return scale(Math.cbrt(v[0]/(v[0]+v[1])*2-1)+1);
-	    }	    
+	    }
 	})
 };
 
