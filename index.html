@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>U.S. General Election Voting</title>
+  </head>
+  <body>
+    <h1>U.S. General Election Voting</h1>
+    <p>Presented by Period 3 SoftDev's Fluffy Winner</p>
+    <div style="border:1px solid black;width:1000px;" id="legend"><br><br><br></div>
+
+    <br>
+
+    <svg id="svg" height="500" width="1000"></svg>
+
+    <br>
+    <form oninput="year.value=slider.value">
+      <label for="slider" id="sliderLabel">Year</label>
+      <input type="range" id="slider" min="2000" max="2012" step="4">
+      <output name="year" for="slider">2008</output>
+    </form>
+    <a href="https://www.archives.gov/federal-register/electoral-college/historical.html">Source</a>
+    
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="https://d3js.org/topojson.v1.min.js"></script>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
